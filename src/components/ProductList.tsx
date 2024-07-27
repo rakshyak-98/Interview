@@ -1,23 +1,8 @@
-import { useReducer } from "react";
 import { products } from "../utils/data";
-import { ProductDetail } from "../utils/types";
 import { Product } from "./Product";
-
-type Action = {
-	type: string;
-};
-
-function reducer(state: ProductDetail[], action: Action) {
-	const { type } = action;
-	switch (type) {
-		default:
-			return state;
-	}
-}
 
 export function ProductTable() {
 	const productMap = new Map();
-	const [selectedProduct, dispatch] = useReducer(reducer, productMap);
 	function handleProductSelection(event: React.FocusEvent) {
 		console.log(event);
 	}
