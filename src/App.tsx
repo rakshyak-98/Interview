@@ -1,5 +1,5 @@
 import { Header } from "./components/PageHeader";
-import { ProductTable } from "./components/ProductList";
+import { ProductTable } from "./components/ProductTable";
 
 function OrderButton() {
 	return <button className="order-button">Order Now</button>;
