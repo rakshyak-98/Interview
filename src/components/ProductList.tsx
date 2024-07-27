@@ -2,10 +2,6 @@ import { products } from "../utils/data";
 import { Product } from "./Product";
 
 export function ProductTable() {
-	const productMap = new Map();
-	function handleProductSelection(event: React.FocusEvent) {
-		console.log(event);
-	}
 	return (
 		<table className="product-table">
 			<thead>
@@ -18,11 +14,7 @@ export function ProductTable() {
 			</thead>
 			<tbody>
 				{products.map((product, index) => (
-					<Product
-						key={index}
-						productDetail={product}
-						onSelection={handleProductSelection}
-					/>
+					<Product key={index} productDetail={product} />
 				))}
 			</tbody>
 		</table>
