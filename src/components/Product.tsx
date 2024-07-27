@@ -1,11 +1,7 @@
 import { ProductDetail } from "../utils/types";
 import { ProductCount } from "./ProductCount";
 
-export function Product({
-	productDetail,
-}: {
-	productDetail: ProductDetail;
-}) {
+export function Product({ productDetail }: { productDetail: ProductDetail }) {
 	const { name, price, totalPrice } = productDetail;
 	return (
 		<tr>
