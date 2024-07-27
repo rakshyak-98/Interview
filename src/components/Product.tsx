@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { ProductDetail } from "../utils/types";
 import { ProductCount } from "./ProductCount";
 
@@ -29,7 +29,21 @@ export function Product({
 		});
 	}
 
-	const updateTotalPrice = useCallback(() => {}, [count]);
+	const updateTotalPrice = () => {
+		setOrderList((prev) => {
+			return prev.map((product) => {
+				if(product.name === name){
+					return {
+						...product,
+						totalPrice: product.price * count,
+						quantity: count
+					}
+				}else{
+					return product;
+				}
+			})
+		});
+	};
 
 	return (
 		<tr>

@@ -1,6 +1,7 @@
 export function ProductCount({
 	count,
 	setCount,
+	updateTotalPrice,
 }: {
 	count: number;
 	updateTotalPrice: () => void;
@@ -11,12 +12,20 @@ export function ProductCount({
 			<button
 				onClick={() => {
 					count > 1 && setCount(count - 1);
+					updateTotalPrice();
 				}}
 			>
 				-
 			</button>
 			<span>{count}</span>
-			<button onClick={() => setCount(count + 1)}>+</button>
+			<button
+				onClick={() => {
+					setCount(count + 1);
+					updateTotalPrice();
+				}}
+			>
+				+
+			</button>
 		</div>
 	);
 }
