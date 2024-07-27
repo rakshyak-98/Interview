@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { products } from "../utils/data";
+import { ProductDetail } from "../utils/types";
 import { Product } from "./Product";
 
 export function ProductTable() {
+	const [orderList, setOrderList] = useState<ProductDetail[] | []>([]);
+	console.log(orderList);
 	return (
 		<table className="product-table">
 			<thead>
@@ -16,10 +20,7 @@ export function ProductTable() {
 			</thead>
 			<tbody>
 				{products.map((product, index) => (
-					<Product
-						key={index}
-						productDetail={product}
-					/>
+					<Product key={index} productDetail={product} setOrderList={setOrderList} />
 				))}
 			</tbody>
 		</table>

@@ -1,6 +1,10 @@
-import { useState } from "react";
-export function ProductCount() {
-	const [count, setCount] = useState(1);
+export function ProductCount({
+	count,
+	setCount,
+}: {
+	count: number;
+	setCount: React.Dispatch<React.SetStateAction<number>>;
+}) {
 	function handleCount() {
 		if (count < 0) {
 			setCount(0);
