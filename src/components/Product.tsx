@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { ProductDetail } from "../utils/types";
 import { ProductCount } from "./ProductCount";
 
@@ -29,6 +29,8 @@ export function Product({
 		});
 	}
 
+	const updateTotalPrice = useCallback(() => {}, [count]);
+
 	return (
 		<tr>
 			<td>
@@ -36,7 +38,11 @@ export function Product({
 			</td>
 			<td>{name}</td>
 			<td>
-				<ProductCount count={count} setCount={setCount} />
+				<ProductCount
+					count={count}
+					setCount={setCount}
+					updateTotalPrice={updateTotalPrice}
+				/>
 			</td>
 			<td>{price}</td>
 			<td>{totalPrice}</td>
