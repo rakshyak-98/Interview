@@ -3,16 +3,14 @@ import { ProductCount } from "./ProductCount";
 
 export function Product({
 	productDetail,
-	onSelection,
 }: {
 	productDetail: ProductDetail;
-	onSelection: () => void;
 }) {
 	const { name, price, totalPrice } = productDetail;
 	return (
 		<tr>
 			<td>
-				<input type="checkbox" onChange={onSelection} />
+				<input type="checkbox" />
 			</td>
 			<td>{name}</td>
 			<td>
