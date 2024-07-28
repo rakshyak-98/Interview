@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { ProductDetail } from "./../utils/types.d";
 
 export function useProductDetails(
@@ -9,7 +9,7 @@ export function useProductDetails(
 	const [count, setCount] = useState(1);
 	const [isChecked, setIsChecked] = useState(false);
 
-	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+	const handleChange = useCallback(function (event: React.ChangeEvent<HTMLInputElement>) {
 		const checked = event?.target.checked;
 		setIsChecked(checked);
 		setOrderList((prev) => {
@@ -23,9 +23,9 @@ export function useProductDetails(
 				return prev.filter((item) => item.name !== name);
 			}
 		});
-	}
+	}, []);
 
-	const updateTotalPrice = () => {
+	const updateTotalPrice = useCallback(() => {
 		setOrderList((prev) => {
 			return prev.map((product) => {
 				if (product.name === name) {
@@ -39,6 +39,6 @@ export function useProductDetails(
 				}
 			});
 		});
-	};
-    return {count, setCount, updateTotalPrice, isChecked, handleChange};
+	}, []);
+	return { count, setCount, updateTotalPrice, isChecked, handleChange };
 }
